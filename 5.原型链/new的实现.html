@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>new的实现</title>
+</head>
+<body>
+  <script>
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    // 手动实现 new
+    function _new() {
+      // 1. 拿到传入的参数中的第一个参数，即构造函数 Func
+      var Func = [].shift.call(arguments);
+
+      // 2. 创建一个空对象 obj，并让其继承 Func.prototype
+      var obj = Object.create(Func.prototype);
+      /* 第二步也能这样写
+       * var obj = {};
+       * obj.__proto__ = Func.prototype;
+      */
+
+      // 3. 执行构造函数，并将 this 指向所创建的空对象 obj
+      var res = Func.apply(obj, arguments);
+
+      // 4. 如果构造函数返回值是对象则返回，不是对象就返回创建的对象 obj
+      return typeof res === 'object'?res : obj;
+    }
+
+    var p1 = _new(Person, 'cjt', 22);
+    console.log(p1);
+    console.log(p1.__proto__);
+    console.log(Person.prototype);
+  </script>
+</body>
+</html>

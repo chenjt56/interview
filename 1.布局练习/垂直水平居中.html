@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垂直水平居中</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /* 1. absolute + margin负值 */
+    /* .out{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+    } */
+    /* 2. absolute + auto margin */
+    /* .out{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    } */
+    /* 3. absolute + calc */
+    /* .out{
+      position: relative;
+      background: red;
+      width: 300px;
+      height: 300px;
+    }
+    .inner{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      left: calc(50% - 50px);
+      top: calc(50% - 50px);
+    } */
+    /* 4. absolute + transform */
+    /* .out{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: yellow;
+    } */
+    /* 5. table布局 */
+    /* .out{
+      display: table-cell;
+      width: 300px;
+      height: 300px;
+      text-align: center;
+      vertical-align: middle;
+      background: red;
+    }
+    .inner{
+      display: inline-block;
+      background: yellow;
+    } */
+    /* 6. flex布局 */
+    /* 6.1 父元素指定子元素的对齐方式 */
+    /* .out{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      background: yellow;
+    } */
+    /* 6.2 子元素自己指定自己的对齐方式 */
+    /* .out{
+      display: flex;
+      width: 300px;
+      height: 300px;
+      background: red;
+      justify-content: center;
+    }
+    .inner{
+      background: yellow;
+      align-self: center;
+    } */
+    /* 7. grid布局 */
+    /* 7.1 父元素指定子元素的对齐方式 */
+    /* .out{
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      background: yellow;
+    } */
+    /* 7.2 子元素自己指定自己的对齐方式 */
+    .out{
+      display: grid;
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+    .inner{
+      background: yellow;
+      align-self: center;
+      justify-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="out">
+    <div class="inner">
+      123456
+    </div>
+  </div>
+</body>
+</html>

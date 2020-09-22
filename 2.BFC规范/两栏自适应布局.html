@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两栏自适应布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      width: 100px;
+      height: 100px;
+      float: left;
+      /* 第一个盒子浮动 */
+      background-color: #ff8000;
+
+    }
+
+    .box2 {
+      /* 利用 BFC 区域不会和 float box 的区域重叠*/
+      overflow: hidden;
+      height: 200px;
+      background-color: #ff0000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+</body>
+</html>
