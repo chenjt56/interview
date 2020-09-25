@@ -1,0 +1,13 @@
+<!-- 1. 父窗口（http://www.domain.com/a.html） -->
+<iframe src="http://child.domain.com/b.html" frameborder="0"></iframe>
+<script>
+  document.domain = 'domain.com';
+  var user = 'admin';
+</script>
+
+<!-- 2. 子窗口（http://child.domain.com/b.html） -->
+<script>
+  document.domain = 'domain.com';
+  // 获取父窗口中的变量
+  alert('get js data from parent -->' + window.parent.user);
+</script>

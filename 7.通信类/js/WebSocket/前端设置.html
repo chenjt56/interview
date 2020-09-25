@@ -1,0 +1,24 @@
+<div>
+  user input: <input type="text">
+</div>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script>
+  var socket = io('http://www.domain2.main.com:8080');
+
+  // 连接成功处理
+  socket.on('connect', () => {
+    // 监听服务端消息
+    socket.on('message', (msg) => {
+      console.log('data from server -->' + msg);
+    });
+
+    // 监听服务端关闭
+    socket.on('disconnect', () => {
+      console.log('Server socket has cloaed.');
+    });
+  });
+
+  document.getElementsByTagName('input')[0].onblur = function() {
+    socket.send(this.value);
+  };
+</script>

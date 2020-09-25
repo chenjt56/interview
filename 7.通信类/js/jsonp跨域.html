@@ -1,0 +1,16 @@
+<script>
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+
+  // 传参一个回调函数给后端，方便后端返回时执行前端定义的回调函数
+  script.src = 'http://www.example.com:8080/login?user=admin&callback=hanleCallback';
+
+  // 执行回调函数
+  function handleCallback(res){
+    alert(JSON.stringify(res));
+  }
+</script>
+<!-- 
+  服务端返回即执行全局回调函数：
+  handleCallback({"status": true, "user": "admin"});
+ -->

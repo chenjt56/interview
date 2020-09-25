@@ -1,0 +1,31 @@
+<!-- 1. a.html(http://www.domain1.com/a.html) -->
+<iframe src="http://www.domain2.com/b.html" frameborder="0" style="display: none;"></iframe>
+<script>
+  var iframe = document.getElementsByTagName('iframe');
+  iframe.onload = function() {
+    var data = {
+      name: 'cjt'
+    };
+    // 向 domain2 传送跨域数据
+    iframe.contentWindow.postMessage(JSON.stringify(data), 'http://www.domain2.com');
+  }
+
+  // 接收 domain2 返回的数据
+  window.addEventListener('message', function(e) {
+    alert('data from domain2 --->' + e.data);
+  }, false);
+</script>
+<!-- 2. b.html(http://www.domain2.com/b.html) -->
+<script>
+  // 接收 domain1 的数据
+  window.addEventListener('message', function(e) {
+    alert('data from domain1 --->' + e.data);
+
+    var data = JSON.parse(e.data);
+    if(data) {
+      data.age = 16;
+      // 处理之后再发送给 domain1
+      window.parent.postMessage(JSON.stringify(data), 'http://www.domain1.com');
+    }
+  }, false);
+</script>
