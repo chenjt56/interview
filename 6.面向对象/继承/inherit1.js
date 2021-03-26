@@ -7,6 +7,11 @@ Parent1.prototype.say = function() {
   console.log("say hello");
 }
 
+// 在子类的构造函数中执行父类的构造函数，并为其绑定子类的 this，让父类的构造函数把成员属性的方法挂到子类的 this 上去，
+// 这样既能避免实例之间共享一个原型对象，又能像父类构造函数传参
+
+
+// ！缺点： 这样继承找不到父类原型方法上的属性和方法
 function Child1(name, age) {
   Parent1.call(this, name);
   this.age = age;
